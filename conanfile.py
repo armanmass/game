@@ -54,18 +54,15 @@ class SetUp(ConanFile):
                 self.conf.define("tools.build:cflags", release_flags)
     
     def generate(self):
+        cmake = CMakeToolchain(self)
+        cmake.generator = "Ninja"
+        if self.settings.compiler.cppstd:
+            cmake.variables["CMAKE_CXX_STANDARD"] = str(self.settings.compiler.cppstd)
+            cmake.variables["CMAKE_CXX_STANDARD_REQUIRED"] = "ON"
+        cmake.generate()
+
         deps = CMakeDeps(self)
         deps.generate()
-        
-        tc = CMakeToolchain(self)
-        tc.generator = "Ninja"
-        tc.cache_variables["CMAKE_C_COMPILER"] = "g"
-        tc.cache_variables["CMAKE_CXX_COMPILER"] = "g++"
-        # print("HELLLLLLLLLLLLLLLLOO   ", self.settings.compiler.cppstd)
-        if self.settings.compiler.cppstd:
-            tc.variables["CMAKE_CXX_STANDARD"] = str(self.settings.compiler.cppstd)
-            tc.variables["CMAKE_CXX_STANDARD_REQUIRED"] = "ON"
-        tc.generate()
 
     def layout(self):
         cmake_layout(self)
