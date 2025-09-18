@@ -33,3 +33,4 @@ echo "All builds done!"
 echo "Release executables: build/Release/"
 # echo "Debug executables with sanitizer suffixes: build/Debug/"
 # ls -l build/Debug/
+
