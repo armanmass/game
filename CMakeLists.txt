@@ -5,3 +5,5 @@ list(APPEND CMAKE_PREFIX_PATH "$ENV{HOME}/.local")
 
 add_subdirectory(lib)
 add_subdirectory(src)
+add_subdirectory(assets)
+

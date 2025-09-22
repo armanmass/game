@@ -1,0 +1,21 @@
+file(GLOB_RECURSE ASSET_FILES LIST_DIRECTORIES false *)
+
+foreach(ASSET_FILE ${ASSET_FILES})
+    file(RELATIVE_PATH REL_ASSET_FILE ${CMAKE_CURRENT_SOURCE_DIR} ${ASSET_FILE})
+
+    set(DEST_ASSET_FILE ${CMAKE_BINARY_DIR}/${REL_ASSET_FILE})
+
+    get_filename_component(DEST_ASSET_DIR ${DEST_ASSET_FILE} DIRECTORY)
+
+    add_custom_command(
+        OUTPUT ${DEST_ASSET_FILE}
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_ASSET_DIR}
+        COMMAND ${CMAKE_COMMAND} -E copy ${ASSET_FILE} ${DEST_ASSET_FILE}
+        MAIN_DEPENDENCY ${ASSET_FILE}
+        COMMENT "Copying asset: ${REL_ASSET_FILE}"
+    )
+
+    list(APPEND ASSET_OUTPUTS ${DEST_ASSET_FILE})
+endforeach()
+
+add_custom_target(CopyAssets ALL DEPENDS ${ASSET_OUTPUTS})

@@ -8,6 +8,6 @@ add_executable(
 target_link_libraries(
     Game 
     PRIVATE 
-        GameLib
+        GameModule
         ${RAYLIB_LIBRARY}
 )
