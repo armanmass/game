@@ -6,12 +6,14 @@ class Obstacle
 {
 public:
     Obstacle(Vector2 position);
-    void Draw();
+    void Draw() const;
 
 private:
     Vector2 position_;
     std::vector<Block> blocks;
-    std::vector<std::vector<int>> grid = 
+public:
+    static constexpr size_t numObstacles{ 4 };
+    static inline const std::vector<std::vector<int>> grid = 
     {
         {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
         {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
