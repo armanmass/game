@@ -14,11 +14,12 @@ int main()
     while (!WindowShouldClose())
     {
         game.HandleInput();
-        game.Update();
 
         BeginDrawing();
         ClearBackground(Settings::backgroundColor);
+
         game.Draw();
+        game.Update();
 
         EndDrawing();
     }

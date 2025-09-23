@@ -11,6 +11,8 @@ Spaceship::Spaceship()
 
     position_.x = (GetScreenWidth()-image_.width)/2.0f;
     position_.y = (GetScreenHeight()-image_.height);
+
+    laserLastFiredTime = 0.0;
 }
 
 Spaceship::~Spaceship()
@@ -25,17 +27,22 @@ void Spaceship::Draw()
 
 void Spaceship::MoveLeft()
 {
-    position_.x -= horizontalSpeed;
+    position_.x -= spaceshipHorizSpeed;
     position_.x = std::max(position_.x, 0.0f);
 }
 
 void Spaceship::MoveRight()
 {
-    position_.x += horizontalSpeed;
+    position_.x += spaceshipHorizSpeed;
     position_.x = std::min(position_.x, static_cast<float>(GetScreenWidth())-image_.width);
 }
 
 void Spaceship::FireLaser()
 {
-
+    if (GetTime() - laserLastFiredTime >= laserFireCooldown)
+    {
+        Vector2 laserStartPos {position_.x + image_.width/2.0f - Laser::laserWidth/2.0f, position_.y};
+        lasers.emplace_back(laserStartPos, laserVertSpeed);
+        laserLastFiredTime = GetTime();
+    }
 }

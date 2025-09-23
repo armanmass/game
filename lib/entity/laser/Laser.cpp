@@ -7,10 +7,8 @@ Laser::Laser(Vector2 position, float speed)
     , active_(true)
 { }
 
-void Laser::Draw()
+void Laser::Draw() const
 {
-    static constexpr int laserWidth{ 4 };
-    static constexpr int laserHeight{ 15 };
     static constexpr Color laserColorCyan{ 0, 255, 255, 255 };
     if (active_)
         DrawRectangle(position_.x, position_.y, laserWidth, laserHeight, laserColorCyan);

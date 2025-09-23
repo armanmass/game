@@ -9,6 +9,7 @@ public:
     void Draw();
     void Update();
     void HandleInput();
+    void DeleteInactive();
 private:
     Spaceship spaceship{};
 };
