@@ -3,6 +3,7 @@
 
 #include "Game.hpp"
 #include "Settings.hpp"
+#include "entity/alien/Alien.hpp"
 
 int main()
 {
@@ -10,6 +11,7 @@ int main()
     SetTargetFPS(60);
 
     Game game{};
+    Alien alien{1, {100,100}};
 
     while (!WindowShouldClose())
     {
@@ -19,6 +21,7 @@ int main()
         ClearBackground(Settings::backgroundColor);
 
         game.Draw();
+        alien.Draw();
         game.Update();
 
         EndDrawing();

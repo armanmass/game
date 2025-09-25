@@ -1,4 +1,5 @@
 #include "Block.hpp"
+#include "Settings.hpp"
 #include <raylib.h>
 
 Block::Block(Vector2 position)
@@ -7,5 +8,5 @@ Block::Block(Vector2 position)
 
 void Block::Draw() const
 {
-    DrawRectangle(position_.x, position_.y, 3, 3, blockColor);
+    DrawRectangle(position_.x, position_.y, 3, 3, Settings::playerColor);
 }

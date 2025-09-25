@@ -1,4 +1,5 @@
 #include "Laser.hpp" 
+#include "Settings.hpp"
 #include <raylib.h>
 
 Laser::Laser(Vector2 position, float speed)
@@ -9,9 +10,8 @@ Laser::Laser(Vector2 position, float speed)
 
 void Laser::Draw() const
 {
-    static constexpr Color laserColorCyan{ 0, 255, 255, 255 };
     if (active_)
-        DrawRectangle(position_.x, position_.y, laserWidth, laserHeight, laserColorCyan);
+        DrawRectangle(position_.x, position_.y, laserWidth, laserHeight, Settings::playerColor);
 }
 
 void Laser::Update()
