@@ -16,7 +16,6 @@ public:
     auto& getLasers() { return lasers; };
 private:
     static constexpr float spaceshipHorizSpeed{ 7.0f };
-    static constexpr float laserVertSpeed{ -6.0f };
     static constexpr double laserFireCooldown{ 0.35 };
 
     Texture2D image_;

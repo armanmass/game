@@ -42,7 +42,7 @@ void Spaceship::FireLaser()
     if (GetTime() - laserLastFiredTime >= laserFireCooldown)
     {
         Vector2 laserStartPos {position_.x + image_.width/2.0f - Laser::laserWidth/2.0f, position_.y};
-        lasers.emplace_back(laserStartPos, laserVertSpeed);
+        lasers.emplace_back(laserStartPos, -Laser::laserVertSpeed);
         laserLastFiredTime = GetTime();
     }
 }

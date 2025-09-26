@@ -5,14 +5,15 @@ class Alien
 {
 public:
     Alien(int type, Vector2 position);
-    void Update();
+    void Update(float direction);
     void Draw() const;
 
-    auto getImage() { return image_; }
+    static auto& getImages() { return alienImages_; }
     auto getType() { return type_; }
-    auto getPos() { return position_; }
+    auto& getPos() { return position_; }
+    static void unloadImages();
 private:
-    Texture2D image_;
+    static Texture2D alienImages_[3];
     Vector2 position_;
     int type_;
 };

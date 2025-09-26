@@ -1,11 +1,14 @@
 #pragma once
 #include <raylib.h>
 
+
 class Laser
 {
 public:
+static constexpr float laserVertSpeed{ 6.0f };
 static constexpr int laserWidth{ 4 };
 static constexpr int laserHeight{ 15 };
+static constexpr float laserRadius{ 5.0f };
 public:
     Laser(Vector2 position, float speed);
     void Update();

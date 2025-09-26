@@ -4,6 +4,8 @@
 #include <print>
 #include <string>
 
+Texture2D Alien::alienImages_[3]{};
+
 Alien::Alien(int type, Vector2 position)
     : type_(type)
     , position_(position)
@@ -12,10 +14,10 @@ Alien::Alien(int type, Vector2 position)
     std::string alienPath{"assets/aliens/"};
     switch (type)
     {
-    case 1:
+    case 0:
         alienPath += "prod";
         break;
-    case 2:
+    case 1:
         alienPath += "sean";
         break;
     default:
@@ -23,10 +25,23 @@ Alien::Alien(int type, Vector2 position)
         break;
     }
     alienPath += "64.png";
-    image_ = LoadTexture(alienPath.c_str());
+    if (alienImages_[type_].id == 0)
+        alienImages_[type_] = LoadTexture(alienPath.c_str());
 }
+
+void Alien::Update(float direction)
+{
+    position_.x += direction;
+}
+
 
 void Alien::Draw() const
 {
-    DrawTextureV(image_, position_, WHITE);
+    DrawTextureV(alienImages_[type_], position_, WHITE);
+}
+
+void Alien::unloadImages()
+{
+    for(const auto& image : alienImages_)
+        UnloadTexture(image);
 }

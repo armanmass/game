@@ -11,7 +11,7 @@ Laser::Laser(Vector2 position, float speed)
 void Laser::Draw() const
 {
     if (active_)
-        DrawRectangle(position_.x, position_.y, laserWidth, laserHeight, Settings::playerColor);
+        DrawCircle(position_.x, position_.y, laserRadius, Settings::playerColor);
 }
 
 void Laser::Update()
