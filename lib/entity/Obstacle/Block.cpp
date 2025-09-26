@@ -10,3 +10,8 @@ void Block::Draw() const
 {
     DrawRectangle(position_.x, position_.y, 3, 3, Settings::playerColor);
 }
+
+Rectangle Block::getHitbox()
+{
+    return {position_.x, position_.y, blockThickness, blockThickness};
+}

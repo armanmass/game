@@ -7,6 +7,7 @@ class Obstacle
 public:
     Obstacle(Vector2 position);
     void Draw() const;
+    auto& getBlocks() { return blocks; }
 
 private:
     Vector2 position_;

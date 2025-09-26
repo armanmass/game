@@ -12,6 +12,7 @@ public:
     auto getType() { return type_; }
     auto& getPos() { return position_; }
     static void unloadImages();
+    Rectangle getHitbox();
 private:
     static Texture2D alienImages_[3];
     Vector2 position_;

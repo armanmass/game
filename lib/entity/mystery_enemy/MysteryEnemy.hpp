@@ -9,6 +9,8 @@ public:
     void Update();
     void Draw() const;
     void Spawn();
+    Rectangle getHitbox();
+    void unalive() { alive_ = false; }
 
     constexpr bool isAlive() const noexcept { return alive_; }
     constexpr float getLastSpawned() const noexcept { return lastSpawned; }
@@ -20,7 +22,7 @@ private:
     Texture2D image_;
     float lastSpawned{};
     float spawnInterval{};
-    static constexpr float startY{ 91.0f };
+    static constexpr float startY{ 0.0f };
     float speed{ 3.0f };
     bool alive_{ false };
 };

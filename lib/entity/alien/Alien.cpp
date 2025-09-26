@@ -45,3 +45,10 @@ void Alien::unloadImages()
     for(const auto& image : alienImages_)
         UnloadTexture(image);
 }
+
+Rectangle Alien::getHitbox()
+{
+    return {position_.x, position_.y, 
+            static_cast<float>(alienImages_[type_].width), 
+            static_cast<float>(alienImages_[type_].height)};
+}
